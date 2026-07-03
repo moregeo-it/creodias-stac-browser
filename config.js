@@ -7,6 +7,7 @@ export default {
   allowExternalAccess: false, // Must be true if catalogUrl is not given
   allowedDomains: [
     "creodias.eu",
+    "download.dataspace.copernicus.eu"
   ],
   enforcedColorMode: "dark",
   detectLocaleFromBrowser: true,
