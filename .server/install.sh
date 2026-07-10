@@ -18,10 +18,13 @@ git clone https://github.com/moregeo-it/creodias-stac-browser
 sudo a2enmod rewrite
 sudo cp ./creodias-stac-browser/.server/browser.conf /etc/apache2/sites-available/000-default.conf
 sudo certbot --apache -d browser.stac.creodias.eu
+# Also issue RSA certificate in addition to the default ECDSA certificate for older corporate firewalls etc.
+sudo certbot certonly --webroot -w /var/www/html -d browser.stac.creodias.eu --key-type rsa --cert-name browser.stac.creodias.eu-rsa -n
+sudo sed -i '/SSLCertificateKeyFile/a SSLCertificateFile /etc/letsencrypt/live/browser.stac.creodias.eu-rsa/fullchain.pem\nSSLCertificateKeyFile /etc/letsencrypt/live/browser.stac.creodias.eu-rsa/privkey.pem' /etc/apache2/sites-available/000-default-le-ssl.conf
 sudo service apache2 restart
 sudo crontab -e
 # in crontab, add the following lines (without the leading '# '):
-# 0 3 * * * /usr/bin/certbot renew --apache -n
+# 0 3 * * * /usr/bin/certbot renew -n
 # 0 4 * * * /bin/systemctl restart apache2
 
 # Build STAC Browser etc.
