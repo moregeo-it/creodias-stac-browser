@@ -94,12 +94,8 @@ $link-hover-color: #fd5e2c;
 @import 'bootstrap/scss/_variables';
 
 // Main/top header of the website
-$header: $primary;
-$header-background: linear-gradient(to bottom,
-  color-mix(in srgb, var(--sb-header) 85%, #fff),
-  var(--sb-header),
-  color-mix(in srgb, var(--sb-header) 85%, #000)
-);
+$header: #08122B;
+$header-background: var(--sb-header);
 $header-position: sticky; // sticky or static
 $header-font-size: 1.5rem;
 $header-font-weight: 600;

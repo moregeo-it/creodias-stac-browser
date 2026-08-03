@@ -17,23 +17,16 @@ export default {
   supportedLocales: [
     "ar",
     "de",
-//  "de-CH",
     "es",
     "en",
-//  "en-GB",
-//  "en-US",
     "fr",
-//  "fr-CA",
-//  "fr-CH",
+    "id",
     "it",
-//  "it-CH",
+    "ja",
+    "pl",
+    "pt",
     "ro",
     "ru",
-    "ja",
-    "pt",
-//  "pt-BR",
-    "id",
-    "pl",
     "sv"
   ],
   apiCatalogPriority: null,
@@ -65,8 +58,8 @@ export default {
   requestHeaders: {},
   requestQueryParameters: {},
   socialSharing: ['email', 'bsky', 'mastodon', 'x'],
-  preprocessSTAC: stac => {
-    if (stac.getBrowserPath() === '/') {
+  preprocessSTAC: (stac, state, getters) => {
+    if (getters.toBrowserPath(stac.getAbsoluteUrl()) === '/') {
       stac.title = TITLE;
       stac.description = "Access all EO data offered by CREODIAS through their STAC API.";
     }
@@ -80,5 +73,22 @@ export default {
   transactionsRequireLogin: true,
   transactionsRequirePreflight: true,
   crs: {},
-  footerLinks: null
+  footerLinks: [
+    {
+      label: "Contact us",
+      url: "https://creodias.eu/contact/"
+    },
+    {
+      label: "Terms of service",
+      url: "https://creodias.eu/terms-of-service/"
+    },
+    {
+      label: "Privacy policy",
+      url: "https://creodias.eu/privacy-policy/"
+    },
+    {
+      label: "Cookie policy",
+      url: "https://creodias.eu/cookie-policy/"
+    }
+  ]
 };
