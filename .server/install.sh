@@ -21,6 +21,7 @@ sudo certbot --apache -d browser.stac.creodias.eu
 # Also issue RSA certificate in addition to the default ECDSA certificate for older corporate firewalls etc.
 sudo certbot certonly --webroot -w /var/www/html -d browser.stac.creodias.eu --key-type rsa --cert-name browser.stac.creodias.eu-rsa -n
 sudo sed -i '/SSLCertificateKeyFile/a SSLCertificateFile /etc/letsencrypt/live/browser.stac.creodias.eu-rsa/fullchain.pem\nSSLCertificateKeyFile /etc/letsencrypt/live/browser.stac.creodias.eu-rsa/privkey.pem' /etc/apache2/sites-available/000-default-le-ssl.conf
+sudo apache2ctl configtest
 sudo service apache2 restart
 sudo crontab -e
 # in crontab, add the following lines (without the leading '# '):

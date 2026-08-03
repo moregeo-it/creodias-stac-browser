@@ -1,18 +1,43 @@
+.btn-header,
+.btn-primary {
+  background-color: $primary;
+  border-color: darken($primary, 15%);
+}
+
+.btn-header:hover,
+.btn-header:focus,
+.btn-header:active,
+.btn-header.active,
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active {
+  background-color: $link-hover-color;
+  border-color: darken($primary, 15%);
+}
+
+.btn-header,
 .btn-primary,
+.btn-outline-primary,
+.btn-header:hover,
+.btn-header:focus,
+.btn-header:active,
+.btn-header.active,
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary:active,
 .btn-primary.active,
-.btn-outline-primary,
 .btn-outline-primary:hover,
 .btn-outline-primary:focus,
 .btn-outline-primary:active,
 .btn-outline-primary.active {
-  color: #fff;
+  color: $body-color-dark;
 }
 
-.btn-primary:hover,
-.btn-primary:focus,
-.btn-primary:active {
-  background-color: #fd5e2c;
+header > .site {
+  border-bottom: 3px solid $primary;
+
+  .header-title {
+    color: rgba(var(--bs-link-color-rgb),var(--bs-link-opacity, 1)) !important;
+  }
 }
